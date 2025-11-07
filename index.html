@@ -42,11 +42,35 @@
 
   <script src="app.js"></script>
   <script>
-    // Video Button Functionality
-    document.getElementById("video-button").addEventListener("click", function() {
-      const videoContainer = document.getElementById("video-container");
-      videoContainer.classList.toggle("hidden");
+  const video = document.getElementById("birthday-video");
+  const replayBtn = document.getElementById("replay-btn");
+  const surpriseSection = document.getElementById("surprise");
+
+  // Intersection Observer to auto-play video when section is visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
     });
-  </script>
+  }, { threshold: 0.6 });
+
+  observer.observe(surpriseSection);
+
+  // Show Replay button after video ends
+  video.addEventListener("ended", () => {
+    replayBtn.classList.remove("hidden");
+  });
+
+  // Replay functionality
+  replayBtn.addEventListener("click", () => {
+    video.currentTime = 0;
+    video.play();
+    replayBtn.classList.add("hidden");
+  });
+</script>
+
 </body>
 </html>
