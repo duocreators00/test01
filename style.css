@@ -1,0 +1,219 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background: #fafafa;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: linear-gradient(270deg, #7e22ce, #ec4899, #f59e0b);
+  background-size: 600% 600%;
+  animation: gradientShift 10s ease infinite;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.hero h1 {
+  font-size: 3.5rem;
+  text-shadow: 0 0 20px rgba(255,255,255,0.7);
+}
+.highlight {
+  color: #fffa65;
+  text-shadow: 0 0 20px #ffdd57, 0 0 30px #ff7f50;
+}
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: gold;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.9;
+  animation: fly 3s linear infinite;
+}
+@keyframes fly {
+  from { transform: translate(0,0) scale(1); opacity: 1; }
+  to { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
+}
+
+/* Surprise Section */
+.section {
+  min-height: 100vh;
+  padding: 3rem;
+  text-align: center;
+  background: #fff;
+  color: #333;
+}
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  animation: fadeUp 0.8s ease both;
+}
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.img-container {
+  position: relative;
+  overflow: hidden;
+}
+.img-container img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* Gradient Overlay */
+.img-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+/* Card Content */
+.card-content {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  color: white;
+  z-index: 2;
+  text-align: left;
+}
+.card-content h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+}
+.card-content p {
+  font-size: 1rem;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+
+/* Hover Glow */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 35px rgba(236, 72, 153, 0.4);
+}
+/* Music Notes */
+#music-notes {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.note {
+  position: absolute;
+  font-size: 2rem;
+  color: #ec4899;
+  animation: floatUp 4s linear forwards;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-200px) scale(1.5);
+    opacity: 0;
+  }
+}
+#play-music {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background:#A88905;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+  transition: background 0.3s ease;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background: #222;
+  border-top: 2px solid #ff69b4;
+  z-index: 1000;
+}
+.footer p {
+  margin: 0;
+}
